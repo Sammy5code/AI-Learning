@@ -5,5 +5,5 @@ myChef = Chef()
 myChef.make_chicken()
 
 myChineseChef = ChineseChef()
-myChineseChef.make_chicken()
+myChineseChef.make_special_dish()
 
