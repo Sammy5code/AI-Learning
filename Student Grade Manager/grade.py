@@ -13,40 +13,32 @@ def save_student_grade():
 
 def add_students():
     student_name = input("Enter Student name: ")
-
+    student_class = input("Enter Student Class: ")
     try:
-        math_grade = float(input("Enter Mathematics Grade: "))
+         number_of_subjects = int(input("How many subjects are you offering: "))
     except ValueError:
-        print("Invalid input. Please try again")
-        return
-
-    if math_grade < 0 or math_grade > 100:
-        print("Grade must be between 0 and 100")
-        return
-    
-    try:
-         english_grade = float(input("Enter English-Language Grade: "))
-    except ValueError:
-            print("Invalid input. Please try again")
-            return
-
-    if english_grade < 0 or english_grade > 100:
-        print("Grade must be between 0 and 100")
-        return
-    
-    try:
-         python_grade = float(input("Enter Python Grade: "))
-    except ValueError:
-            print("Invalid input. Please try again")
-            return
-    
-    if python_grade < 0 or python_grade > 100:
-            print("Grade must be between 0 and 100")
-            return
-    
-    grade = {"Math": math_grade, "English": english_grade, "Python": python_grade}
-    student = {"Name": student_name}
-    student["Grades"] = grade
+         print("Invalid input. Try Again")
+         return
+    if number_of_subjects <= 0:
+         print("Number must be greater than zero")
+         return
+    grades = {}
+    for _ in range(number_of_subjects):
+         subject = input("Enter Subject: ")
+         if any(subject.lower() == existing_subject.lower() for existing_subject in grades):
+              print("That subject has been added")
+              return
+         try:
+              grade_value = float(input(f"Enter Grade for {subject}: "))
+         except ValueError:
+              print("Invalid input. Try again")
+              return
+         if grade_value < 0 or grade_value > 100:
+              print("Grade value must be between 0 and 100")
+              return
+         grades[subject] = grade_value
+         
+    student = {"Name": student_name, "Class": student_class, "Grades": grades}
     student_details.append(student)
     save_student_grade()
     print("You have successfully added a student grade")
@@ -57,6 +49,7 @@ def view_students():
      else:
           for index, student in enumerate(student_details, start=1):
                print(f"{index}. {student['Name']}")
+               print(f"Class: {student['Class']}")
                for subject, grade in student["Grades"].items():
                     print(f"      {subject}: {grade}")
 
@@ -67,6 +60,7 @@ def search_student():
             if search_name.lower() == student["Name"].lower():
                   found = True
                   print(f"Name: {student['Name']}")
+                  print(f"Class: {student['Class']}")
                   for subject, grade in student["Grades"].items():
                         print(f"     {subject}: {grade}")
       if not found:
@@ -75,13 +69,17 @@ def search_student():
 def calc_avg():
       student_avg = input("Enter the Student name: ")
       avg = 0
+      found = False
       for student in student_details:
             if student_avg.lower() == student["Name"].lower():
+                 found = True
                  for grade in student["Grades"].values():
                        avg += grade
 
                  average = avg / len(student["Grades"])
                  print(f"Average: {average}")
+      if not found:
+           print(f"{student_avg} not found")
 
 def calc_grade():
       student_grade = input("Enter the Student name: ")
@@ -109,22 +107,24 @@ def calc_grade():
                 else:
                       grade = "F"
                 print(f"Student: {student['Name']}")
+                print(f"Class: {student['Class']}")
                 print(f"Average: {average}")
                 print(f"Grade: {grade}")
       if not found:
             print(f"{student_grade} not found")
 
 def update_student_grade():
+      found = False
       if not student_details:
-            print("No student foound")
+            print("No student found")
       else:
             for index, student in enumerate(student_details, start=1):
                 print(f"{index}. {student['Name']}")
+                print(f"         Class: {student['Class']}")
                 for subject, grade in student["Grades"].items():
                     print(f"      {subject}: {grade}")
 
             update_grade = input("Enter the student name: ")
-            found = False
             for student in student_details:
                 if update_grade.lower() == student["Name"].lower():
                     found = True
@@ -156,6 +156,7 @@ def remove_student():
       else:
             for index, student in enumerate(student_details, start=1):
                 print(f"{index}. {student['Name']}")
+                print(f"         Class: {student['Class']}")
                 for subject, grade in student["Grades"].items():
                     print(f"      {subject}: {grade}")
 
