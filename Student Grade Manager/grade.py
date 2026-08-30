@@ -11,6 +11,24 @@ def save_student_grade():
      with open ("student_details.json", "w") as file:
           json.dump(student_details, file)
 
+
+def get_valid_grade(subject):
+     while True:
+          try:
+               grade = float(input(f"Enter Grade for {subject}: "))
+          except ValueError:
+               print("Invalid input. Try again")
+               continue
+          if grade < 0 or grade > 100:
+               print("Grade must be between 0 and 100")
+          else:
+               return grade
+
+def find_student(name):
+     for student in student_details:
+          if name.lower() == student["Name"].lower():
+               return student
+     return None
 def add_students():
     student_name = input("Enter Student name: ")
     student_class = input("Enter Student Class: ")
@@ -26,16 +44,9 @@ def add_students():
     for _ in range(number_of_subjects):
          subject = input("Enter Subject: ")
          if any(subject.lower() == existing_subject.lower() for existing_subject in grades):
-              print("That subject has been added")
+              print("That subject has already been added")
               return
-         try:
-              grade_value = float(input(f"Enter Grade for {subject}: "))
-         except ValueError:
-              print("Invalid input. Try again")
-              return
-         if grade_value < 0 or grade_value > 100:
-              print("Grade value must be between 0 and 100")
-              return
+         grade_value = get_valid_grade(subject)
          grades[subject] = grade_value
          
     student = {"Name": student_name, "Class": student_class, "Grades": grades}
@@ -54,17 +65,16 @@ def view_students():
                     print(f"      {subject}: {grade}")
 
 def search_student():
-      search_name = input("Enter the Student name: ")
-      found = False
-      for student in student_details:
-            if search_name.lower() == student["Name"].lower():
-                  found = True
-                  print(f"Name: {student['Name']}")
-                  print(f"Class: {student['Class']}")
-                  for subject, grade in student["Grades"].items():
-                        print(f"     {subject}: {grade}")
-      if not found:
-            print(f"{search_name} not found")
+      search_name = input("Enter the name of the student: ")
+      student = find_student(search_name)
+      if student is None:
+           print(f"{search_name} not found")
+           return
+      print(f"Name: {student['Name']}")
+      print(f"Class: {student['Class']}")
+      for subject, grade in student["Grades"].items():
+            print(f"     {subject}: {grade}")
+      
 
 def calc_avg():
       student_avg = input("Enter the Student name: ")
@@ -133,14 +143,8 @@ def update_student_grade():
                     for subject in student["Grades"]:
                         if update_subject.lower() == subject.lower():
                             seen = True
-                            try:
-                                new_grade = float(input("Enter new Grade:"))
-                            except ValueError:
-                                print("Invalid Input. Try Again")
-                                return
-                            if new_grade < 0 or new_grade > 100:
-                                print("Grade must be between 0 and 100")
-                                return
+                            
+                            new_grade = get_valid_grade(subject)
                             student["Grades"][subject] = new_grade
                             save_student_grade()
                             print("Grade has been updated successfully")
@@ -148,7 +152,7 @@ def update_student_grade():
                     if not seen:
                         print(f"{update_subject} is not a valid subject")
       if not found:
-            print("Student no found")
+            print("Student not found")
 
 def remove_student():
       if not student_details:
