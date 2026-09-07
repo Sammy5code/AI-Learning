@@ -1,21 +1,14 @@
-class Dog:
-    def __init__(self, name, breed, owner):
+class Person:
+    def __init__(self, name, age):
         self.name = name
-        self.breed = breed 
-        self.owner = owner
-    def bark(self):
-        print("whoof whoof")
+        self.age = age 
+ 
+    def greet(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
 
-class Owner:
-    def __init__(self, name, address, contact_number):
-        self.name = name 
-        self.address = address
-        self.phone_number = contact_number
-        
-owner1= Owner("Danny", "122 Springfield Drive", "888-999")
-dog1 = Dog("Bruce","German Shepherd", owner1)
-print(dog1.owner.name)
+person1 = Person("Alice", 30)
+person1.greet()
 
-owner2= Owner("Sally", "122 Springfield Drive", "888-999")
-dog2 = Dog("Freya", "Greyhound", owner2)
-print(dog2.owner.name)
+person2 = Person("Bob", 42)
+person2.greet()
+
