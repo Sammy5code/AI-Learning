@@ -1,26 +1,20 @@
-# Accessing and modifying data:
-# 1. The traditional way: make the data private and use 
-# getters and setters:
-# 2. Properties
-
+# Static Attributes
 
 class User:
-    def __init__(self, username, email, password):
+    user_count = 0
+
+    def __init__(self, username, email):
         self.username = username
-        self._email = email
-        self.password = password
+        self.email = email
+        User.user_count += 1
 
-    @property
-    def email(self):
-        print("Email Accessed")
-        return self._email
+    def display_user(self):
+        print(f"Username: {self.username}. Email: {self.email}")
 
-    @email.setter
-    def email(self, new_email):
-        if "@" in new_email:
-            self._email = new_email
+user1 = User("Gbolahan", "gbo.gmail.com")
+user2 = User("Samuel", "sam@gmail.com")
 
+print(User.user_count)
+print(user1.user_count)
+print(user2.user_count)
 
-user1 = User("datheman", "Dan@gmail.com", "123")
-user1.email = "this@gmail.com"
-print(user1.email)
