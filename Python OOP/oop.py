@@ -1,40 +1,22 @@
-# Encapsulation
-
-class BadBankAccount:
-    def __init__(self, balance):
-        self.balance = balance 
+# Abstraction
 
 
-#account = BadBankAccount(0.0)
-#account.balance = -1
-#print(account.balance)
+class EmailService:
 
-class BankAccount:
-    def __init__(self):
-        self._balance = 0.0
+    def _connect(self):
+        print("Connecting to email server")
 
-    @property
-    def balance(self):
-        return self._balance
+    def _authenticate(self, username, password):
+        print("Aunthenticating")
 
-    def deposit(self, amount):
-        if amount <= 0:
-            raise ValueError("Deposit must be positive.")
-        self._balance += amount 
+    def send_email(self):
+        self._connect()
+        self._authenticate()
+        print("Sending Email....")
+        self._disconnect()
 
-    def withdraw(self, amount):
-        if amount <= 0:
-            raise ValueError("Deposit must be positive.")
-        if amount >= self._balance:
-            raise ValueError("Insufficient funds")
-        self._balance -= amount
+    def _disconnect(self):
+        print("Disconnecting from email server...")
 
-account = BankAccount()
-print(account.balance)
-account.deposit(1.99)
-print(account.balance)
-account.withdraw(1)
-print(account.balance)
-account.withdraw(100)
-
-        
+email = EmailService()
+email.send_email()
