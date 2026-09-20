@@ -1,33 +1,40 @@
-# Static vs Instance Method Example
+# Encapsulation
+
+class BadBankAccount:
+    def __init__(self, balance):
+        self.balance = balance 
+
+
+#account = BadBankAccount(0.0)
+#account.balance = -1
+#print(account.balance)
 
 class BankAccount:
-    MIN_BALANCE = 100
+    def __init__(self):
+        self._balance = 0.0
 
-    def __init__(self, owner, balance = 0):
-        self.owner = owner
-        self._balance = balance
+    @property
+    def balance(self):
+        return self._balance
 
     def deposit(self, amount):
-        if self._is_valid_amount(amount):
-            self._balance += amount
-            self._log_transaction("deposit", amount)
-        else:
-            print("Deposit amount must be positive.")
+        if amount <= 0:
+            raise ValueError("Deposit must be positive.")
+        self._balance += amount 
 
-    def _is_valid_amount(self, amount):
-        return amount > 0 
+    def withdraw(self, amount):
+        if amount <= 0:
+            raise ValueError("Deposit must be positive.")
+        if amount >= self._balance:
+            raise ValueError("Insufficient funds")
+        self._balance -= amount
 
-    def _log_transaction(self, transaction_type, amount):
-        print(f"Logging {transaction_type} of ${amount}. New Balance: ${self._balance}")
+account = BankAccount()
+print(account.balance)
+account.deposit(1.99)
+print(account.balance)
+account.withdraw(1)
+print(account.balance)
+account.withdraw(100)
 
-    @staticmethod
-    def is_valid_interest_rate(rate):
-        return 0 <= rate <= 5 
-
-
-account = BankAccount("Alice", 500)
-account.deposit(200)
-
-
-        
         
