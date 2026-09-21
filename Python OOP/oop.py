@@ -11,7 +11,7 @@ class Vehicle:
      def stop(self):
           print("Vehicle is stopping")
 
-          
+
 class Car(Vehicle):
     def __init__(self, brand, model, year, number_of_doors):
         super().__init__(brand, model, year)
@@ -39,14 +39,27 @@ class Motorcycle(Vehicle):
     def stop(self):
         print("Motorcycle is stopping.")
 
+class Plane(Vehicle):
+    def __init__(self, brand, model, year):
+        super().__init__(brand, model, year)
+        self.brand = brand
+        self.model = model
+        self.year = year
 
-vehicles = [
+    def start(self):
+        print("Plane is starting.")
+
+    def stop(self):
+        print("Plane is stopping.")
+
+
+vehicles: list[Vehicle] = [
     Car("Ford", "Focus", 2008, 5),
-    Motorcycle("Honda", "Scoopy", 2008)
+    Motorcycle("Honda", "Scoopy", 2008),
+    Plane("Boeing", "747", 2015)
 ]
 
 for vehicle in vehicles:
-     if isinstance(vehicle, Vehicle):
           print(f"inspecting {vehicle.brand} {vehicle.model} ({type(vehicle).__name__})")
           vehicle.start()
           vehicle.stop()
