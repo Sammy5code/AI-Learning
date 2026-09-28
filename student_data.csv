@@ -1,0 +1,51 @@
+name,age,department,gender,math_score,python_score,english_score,attendance,grade
+David,21,Computer Science,Male,78,84,72,91,B
+David,21,Computer Science,Male,78,84,72,91,B
+David,21,Computer Science,Male,78,84,72,91,B
+David,21,Computer Science,Male,78,84,72,91,B
+Sarah,20,Statistics,Female,85,88,79,95,A
+John,23,Physics,Male,67,71,64,82,C
+Mary,19,Mathematics,Female,92,89,94,97,A
+Michael,22,Computer Science,Male,74,80,69,88,B
+Grace,21,Statistics,Female,81,76,85,90,B
+Daniel,24,Physics,Male,58,63,61,75,D
+Elizabeth,20,Mathematics,Female,88,91,86,93,A
+Samuel,22,Computer Science,Male,69,73,70,84,C
+Anna,19,Statistics,Female,76,82,78,89,B
+Peter,23,Physics,Male,64,68,59,79,C
+Jennifer,21,Mathematics,Female,90,87,92,96,A
+James,20,Computer Science,Male,83,79,81,92,B
+Rebecca,22,Statistics,Female,72,75,77,86,B
+Joseph,24,Physics,Male,55,60,57,71,D
+Victoria,19,Mathematics,Female,95,93,91,98,A
+Anthony,21,Computer Science,Male,77,85,73,90,B
+Linda,23,Statistics,Female,68,74,66,81,C
+Robert,22,Physics,Male,61,65,63,78,C
+Sophia,20,Mathematics,Female,87,90,84,94,A
+Charles,24,Computer Science,Male,70,72,75,83,B
+Charles,24,Computer Science,Male,70,72,75,83,B
+Charles,24,Computer Science,Male,70,72,75,83,B
+Charles,24,Computer Science,Male,70,72,75,83,B
+Nancy,21,Statistics,Female,79,81,80,91,B
+Thomas,23,Physics,Male,66,62,68,80,C
+Ashley,19,Mathematics,Female,84,86,88,92,A
+Christopher,22,Computer Science,Male,73,78,71,87,B
+Michelle,20,Statistics,Female,91,89,93,96,A
+Matthew,25,Physics,Male,59,64,60,73,D
+Emma,21,Mathematics,Female,82,85,80,90,B
+Andrew,23,Computer Science,Male,68,70,67,85,C
+Olivia,20,Statistics,Female,89,92,87,95,A
+Joshua,22,Physics,Male,75,69,72,84,B
+Hannah,19,Mathematics,Female,78,83,76,89,B
+Benjamin,24,Computer Science,Male,62,67,65,77,C
+Chloe,21,Statistics,Female,86,88,90,94,A
+William,23,Physics,Male,71,66,74,82,B
+Mia,20,Mathematics,Female,93,95,89,97,A
+Alexander,22,Computer Science,Male,80,77,82,91,B
+Ella,19,Statistics,Female,74,79,73,88,B
+Daniel,24,Physics,Male,57,61,56,72,D
+Isabella,21,Mathematics,Female,88,91,86,96,A
+Isabella,21,Mathematics,Female,88,91,86,96,A
+Isabella,21,Mathematics,Female,88,91,86,96,A
+Isabella,21,Mathematics,Female,88,91,86,96,A
+Isabella,21,Mathematics,Female,88,91,86,96,A
