@@ -1,11 +1,16 @@
-import matplotlib.pyplot as plt
+import pandas as pd 
+import matplotlib.pyplot as plt 
 
-students = ["Sammy", "John", "Mary", "David", "Sarah"]
-scores = [75, 82, 68, 90, 85]
+data = {
+    "Student": ["Sammy", "John", "Mary", "David", "Sarah"],
+    "Score": [75, 82, 68, 90, 85]
+}
 
-plt.bar(students, scores)
+df = pd.DataFrame(data)
 
-plt.title("Exam Scores")
+plt.bar(df["Student"], df["Score"])
+
+plt.title("Exam Score")
 plt.xlabel("Students")
 plt.ylabel("Scores")
 
