@@ -2,3 +2,13 @@ ai-env/
 __pycache__/
 *.pyc
 Tutuorials/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+
+# Temporary files
+*.log
+.DS_Store
